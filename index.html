@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>21个月宝宝英语启蒙全景规划 · 家庭定制方案 v2</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -289,21 +289,157 @@ footer { background: #2c3e50; color: white; padding: 32px; text-align: center; f
 footer p { margin: 4px 0; }
 
 /* ========== Responsive ========== */
+html { -webkit-text-size-adjust: 100%; }
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+
 @media (max-width: 900px) {
+  .hero { padding: 60px 24px 48px; }
   .hero h1 { font-size: 32px; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero .lead { font-size: 16px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .options-grid, .roadmap, .scenario-grid { grid-template-columns: 1fr 1fr; }
   .timeline { grid-template-columns: repeat(3, 1fr); }
   .tips-grid { grid-template-columns: 1fr; }
   .matrix-row { grid-template-columns: 90px repeat(5, 1fr); font-size: 11px; }
   section { padding: 48px 20px; }
+  .section-head h2 { font-size: 26px; }
+  .compare-table { font-size: 12px; }
 }
-@media (max-width: 600px) {
-  .options-grid, .roadmap, .scenario-grid { grid-template-columns: 1fr; }
-  .timeline { grid-template-columns: 1fr 1fr; }
-  .hero h1 { font-size: 26px; }
-  .compare-table { font-size: 11px; }
-  .compare-table thead th, .compare-table tbody td { padding: 8px 6px; }
+
+@media (max-width: 640px) {
+  /* 顶部导航 */
+  .nav { padding: 10px 16px; gap: 12px; }
+  .nav .logo { font-size: 14px; }
+  .nav a { font-size: 12px; padding: 3px 8px; }
+
+  /* Hero */
+  .hero { padding: 48px 18px 40px; env(safe-area-inset-top); }
+  .hero .eyebrow { font-size: 11px; padding: 4px 12px; margin-bottom: 14px; }
+  .hero h1 { font-size: 24px; letter-spacing: -0.5px; }
+  .hero .lead { font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .hero-stats .stat { padding: 12px; border-radius: 10px; }
+  .hero-stats .stat-num { font-size: 18px; }
+  .hero-stats .stat-label { font-size: 11px; }
+
+  /* Section */
+  section { padding: 40px 16px; }
+  .section-head { margin-bottom: 28px; }
+  .section-head .tag { font-size: 10px; padding: 3px 10px; }
+  .section-head h2 { font-size: 22px; letter-spacing: -0.3px; }
+  .section-head p { font-size: 14px; }
+
+  /* 时间轴：横向滚动 */
+  .timeline {
+    display: flex; overflow-x: auto; gap: 12px;
+    padding-bottom: 12px; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .timeline::before { display: none; }
+  .tl-item {
+    flex: 0 0 140px; scroll-snap-align: start;
+    background: white; padding: 16px 12px; border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .tl-dot { width: 60px; height: 60px; font-size: 24px; margin-bottom: 10px; }
+  .tl-item:nth-child(3) .tl-dot { transform: none; }
+  .tl-age { font-size: 13px; }
+  .tl-desc { font-size: 12px; }
+
+  /* 方案卡片 */
+  .options-grid, .roadmap, .scenario-grid { grid-template-columns: 1fr; gap: 16px; }
+  .option-card { padding: 20px; border-radius: 14px; }
+  .opt-icon { width: 48px; height: 48px; font-size: 24px; margin-bottom: 12px; }
+  .option-card h3 { font-size: 17px; }
+  .opt-price { font-size: 14px; margin-bottom: 10px; }
+  .opt-body { font-size: 13px; }
+  .pros-cons { font-size: 12px; }
+  .pros-cons .pro, .pros-cons .con { padding: 6px 0; }
+
+  /* 国家卡 */
+  .country-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .country-flag { height: 60px; font-size: 28px; }
+  .country-body { padding: 14px; }
+  .country-body h4 { font-size: 15px; }
+  .country-body .cost { font-size: 12px; }
+  .country-body .work-tag { font-size: 10px; padding: 2px 8px; }
+  .country-body ul { font-size: 11.5px; }
+
+  /* 表格横向滚动 */
+  .compare-table { display: block; overflow-x: auto; white-space: nowrap; font-size: 12px; }
+  .compare-table thead th, .compare-table tbody td { padding: 10px 8px; }
+
+  /* 图表 */
+  .chart { padding: 20px 16px; }
+  .chart-title { font-size: 15px; }
+  .chart-sub { font-size: 11px; margin-bottom: 18px; }
+  .bar-group { margin-bottom: 16px; }
+  .bar-label { font-size: 12px; }
+  .bar-label .name { max-width: 60%; }
+  .bar-track { height: 28px; }
+  .bar-fill { font-size: 10px; padding-left: 6px; }
+  .chart-legend { font-size: 11px; gap: 12px; }
+
+  /* 决策矩阵：手机端竖向卡片 */
+  .matrix { padding: 16px; }
+  .matrix-row.head { display: none; }
+  .matrix-row {
+    display: block; padding: 14px 12px; margin-bottom: 10px;
+    background: #fafaf7; border-radius: 10px; border-bottom: none;
+    font-size: 13px;
+  }
+  .matrix-row > div { padding: 0; margin: 4px 0; }
+  .matrix-row > div:first-child { font-size: 15px; margin-bottom: 8px; }
+  .matrix-row > div:not(:first-child) { display: inline-block; margin-right: 12px; }
+  .matrix-row > div:nth-child(2)::before { content: "语言环境 "; color: #6b7280; font-size: 11px; font-weight: 500; }
+  .matrix-row > div:nth-child(3)::before { content: "性价比 "; color: #6b7280; font-size: 11px; font-weight: 500; }
+  .matrix-row > div:nth-child(4)::before { content: "家长可工作 "; color: #6b7280; font-size: 11px; font-weight: 500; }
+  .matrix-row > div:nth-child(5)::before { content: "生活便利 "; color: #6b7280; font-size: 11px; font-weight: 500; }
+  .matrix-row > div:nth-child(6)::before { content: "安全健康 "; color: #6b7280; font-size: 11px; font-weight: 500; }
+
+  /* 场景卡 */
+  .scenario { padding: 20px; }
+  .scenario h4 { font-size: 16px; }
+  .scenario-body { font-size: 13px; }
+
+  /* 路线图 */
+  .rm-card { padding: 18px; }
+  .rm-age { font-size: 18px; }
+  .rm-title { font-size: 14px; }
+  .rm-desc { font-size: 12.5px; }
+  .rm-cost { font-size: 12px; }
+
+  /* 提醒 */
+  .tip { padding: 16px; }
+  .tip-title { font-size: 14px; }
+  .tip-body { font-size: 13px; }
+
+  /* 结论 */
+  .verdict { padding: 32px 20px; border-radius: 16px; }
+  .verdict h3 { font-size: 22px; }
+  .verdict p { font-size: 14px; }
+  .verdict .v-highlight { font-size: 13px; padding: 10px 18px; }
+
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 22px; }
+  .section-head h2 { font-size: 20px; }
+  .country-grid { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero-stats .stat-num { font-size: 16px; }
+}
+
+/* 禁用 iOS 上 hover 抖动 */
+@media (hover: none) {
+  .option-card:hover, .country-card:hover { transform: none; }
+}
+
+/* iPhone 刘海屏 safe-area */
+@supports (padding: max(0px)) {
+  .nav { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  section { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
 }
 </style>
 </head>
